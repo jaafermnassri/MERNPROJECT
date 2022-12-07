@@ -1,0 +1,9 @@
+
+.container a{
+    text-decoration: none !important;
+    color: rgb(255, 255, 255) !important;
+     padding-right: 10px; 
+}
+.dropdown-menu a {
+    color: black !important;
+}
