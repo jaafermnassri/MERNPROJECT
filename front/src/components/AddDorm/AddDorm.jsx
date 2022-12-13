@@ -31,6 +31,7 @@ const AddDorm = () => {
 
   
   return (
+    // <MDBCard className='text-black m-5' style={{borderRadius: '25px'}}>
     <div className="mx-auto mt-5" style={{ maxWidth: '900px' }}>
       <MDBRow>
         <MDBCol md="8" className="mb-4">
@@ -73,7 +74,7 @@ const AddDorm = () => {
       </MDBRow>
      
     </div>
-
+    // </MDBCard>
   )
 }
 

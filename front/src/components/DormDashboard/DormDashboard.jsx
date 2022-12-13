@@ -27,15 +27,16 @@ import {
   MDBTableBody
 } from 'mdb-react-ui-kit';
 import { getAllBookings } from '../../Redux/actions/bookingActions';
+import { detailsUser } from '../../Redux/actions/userActions';
 
 
 const DormDashboard = () => {
   const {id} = useParams()
-    
+  const users = useSelector((state)=>state.userReducer.users)
     const userid = useSelector((state)=>state.userReducer.user._id)
     const oneFoyer = useSelector((state)=> state.foyerReducer.oneFoyer);
-    // const allBookings = useSelector((state)=> state.bookingReducer.bookings);
-    
+    const allBookings = useSelector((state)=> state.bookingReducer.bookings);
+    // const ids = useSelector((state)=> state.bookingReducer.bookings.user);
   const dispatch = useDispatch();
 
 useEffect(() => {
@@ -44,9 +45,15 @@ useEffect(() => {
   }, []);
 
 useEffect(() => {
+  console.log(allBookings)
   dispatch(getAllBookings(id));
   }, []);
 
+ useEffect(() => {
+  dispatch(detailsUser(userid))
+
+ }, [])
+ 
   return (
     <div>
         
@@ -71,10 +78,10 @@ useEffect(() => {
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src="https://static.vecteezy.com/system/resources/previews/007/241/795/original/easy-to-use-flat-icon-of-building-vector.jpg"
+                  src={oneFoyer.image}
                   alt="avatar"
                   className="rounded-circle"
-                  style={{ width: '150px' }}
+                  style={{ width: '150px',height:"150px" }}
                   fluid />
                 <p className="text-muted mb-1">Full Stack Developer</p>
                 <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
@@ -132,7 +139,7 @@ useEffect(() => {
                     <MDBCardText>Address</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                    <MDBCardText className="text-muted">{oneFoyer.adresse}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>
@@ -144,19 +151,27 @@ useEffect(() => {
       <MDBTableHead>
         <tr>
           <th scope='col'>#</th>
-          <th scope='col'>First</th>
-          <th scope='col'>Last</th>
-          <th scope='col'>Email</th>
+          <th scope='col'>FullName</th>
+          <th scope='col'>University</th>
+          <th scope='col'>Action</th>
+          <th scope='col'>Action2</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        <tr>
+      {allBookings.map((booker) => (
+        
+
+
+          <tr booker={booker} key={booker._id} >
           <th scope='row'>1</th>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>{booker.user}</td>
+          <td>{booker.university}</td>
+          
           <td>@mdo</td>
         </tr>
-        
+         
+        ))}
+      
       </MDBTableBody>
     </MDBTable>
     </MDBCard>

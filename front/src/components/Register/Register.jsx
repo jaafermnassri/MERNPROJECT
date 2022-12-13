@@ -3,6 +3,7 @@ import React from "react"
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../Redux/actions/userActions";
+import {MDBBtn,MDBContainer, MDBRow,MDBCol,MDBCard,MDBCardBody,MDBCardImage,MDBInput,MDBIcon, MDBCheckbox}from 'mdb-react-ui-kit';
 import "./register.css"
 export default function Register() {
 
@@ -33,63 +34,61 @@ export default function Register() {
  
 
   return (
-    <div className="Auth-form-container">
-      <form method="POST" onSubmit={handleSubmit} className="Auth-form">
-        <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Sign In</h3>
-          <div className="text-center">
-            Already registered?{" "}
-            <span className="link-primary" /*link to login page*/ >
+    <div>
+     <MDBContainer fluid>
+
+      <MDBCard className='text-black m-5' style={{borderRadius: '25px'}}>
+        <MDBCardBody>
+          <MDBRow>
+          
+            <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-center'>
+            <form method="POST" onSubmit={handleSubmit} className="Auth-form">
+              <p classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
+              <div className="d-flex flex-row align-items-center mb-4 ">
+                <MDBIcon fas icon="user me-3" size='lg'/>
+                <MDBInput name="firstName" label='First Name' id='form1' type='text' className='w-100'/>
+              </div>
+
+              <div className="d-flex flex-row align-items-center mb-4 ">
+                <MDBIcon fas icon="user me-3" size='lg'/>
+                <MDBInput name="lastName" label='Last Name' id='form1' type='text' className='w-100'/>
+              </div>
+
+              <div className="d-flex flex-row align-items-center mb-4">
+                <MDBIcon fas icon="envelope me-3" size='lg'/>
+                <MDBInput name="email" label='Your Email' id='form2' type='email'/>
+              </div>
+
+              <div className="d-flex flex-row align-items-center mb-4">
+                <MDBIcon fas icon="lock me-3" size='lg'/>
+                <MDBInput  name="password" label='Password' id='form3' type='password'/>
+              </div>
+
+              {/* <div className="d-flex flex-row align-items-center mb-4">
+                <MDBIcon fas icon="key me-3" size='lg'/>
+                <MDBInput label='Repeat your password' id='form4' type='password'/>
+              </div> */}
+
+              <div className='mb-4'>
+                <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
+              </div>
+
+              <MDBBtn className='mb-4' size='lg'>Register</MDBBtn>
+              <p className="small fw-bold mt-2 pt-1 mb-2">Already have an account? <Link to="/login">Login</Link></p>
+              </form>
+            </MDBCol>
+
+            <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
+              <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' fluid/>
               
-           <Link to="/login">Sign In</Link>   
-            </span>
-          </div>
-          <div className="form-group mt-3">
-            <label>firstName</label>
-            <input
-                name="firstName"
-              type="text"
-              className="form-control mt-1"
-              placeholder="e.g Jane Doe"
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>lastName</label>
-            <input
-              type="text"
-              name="lastName"
-              className="form-control mt-1"
-              placeholder="e.g Jane Doe"
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>Email address</label>
-            <input
-              type="email"
-              name="email"
-              className="form-control mt-1"
-              placeholder="Email Address"
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              className="form-control mt-1"
-              placeholder="Password"
-            />
-          </div>
-          <div className="d-grid gap-2 mt-3">
-            <button type="submit"  className="btn btn-primary">
-              Submit
-            </button>
-          </div>
-          <p className="text-center mt-2">
-            Forgot password?
-          </p>
-        </div>
-      </form>
+            </MDBCol>
+           
+          </MDBRow>
+        </MDBCardBody>
+      </MDBCard>
+      </MDBContainer>
     </div>
   )
 }
+

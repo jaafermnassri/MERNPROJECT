@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { useSelector } from 'react-redux';
 import UserRow from './UserRow';
-import { deleteUser } from '../../Redux/actions/userActions';
+import { deleteUser, getAllUsers } from '../../Redux/actions/userActions';
 const Dashboard = () => {
   const dispatch = useDispatch();
     const allusers = useSelector((state) => state.userReducer.users);
+    useEffect(() => {
+      dispatch(getAllUsers());
+    }, []);
 //select
   return (
     <div>

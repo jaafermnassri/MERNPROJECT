@@ -22,7 +22,8 @@ router.get("/",isAuth(), async (req, res) => {
 //------------
 router.get("/search",async (req, res) => {
     try {
-        const foyes = await Foyer.find({fullname:{$regex:req.query.fullname},adresse:{$regex:req.query.adresse}}).populate();
+        const foyes = await Foyer.find({fullname:{$regex:req.query.fullname.toUpperCase()}},{adresse:{$regex:req.query.adresse.toUpperCase()}}).populate();
+        
           res.send(foyes);   
     } catch (error) {
         res.status(400).send(error.message);

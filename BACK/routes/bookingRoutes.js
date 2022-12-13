@@ -28,7 +28,7 @@ else{res.status(401).send({msg:"Only students are allowed to book for a dorm"});
 })
 
 
-// get bookings list 
+// get bookings list for this foyer
 router.get("/:id",isAuth(), async (req,res)=> {
     
     if(req.user.role === 'admin' || req.user.role === 'director'){
@@ -39,7 +39,7 @@ router.get("/:id",isAuth(), async (req,res)=> {
         res.status(400).send(error);
     }
 }
-else{res.status(401).send({msg:"You are not an Admin , go back !"});}
+else{res.status(401).send({msg:"You are not an Admin or Director, go back !"});}
 })
 
 module.exports = router;
