@@ -3,3 +3,15 @@
     max-width: 50%;
     margin: 0 auto;
 }
+.input-group {
+    margin-top: 15px !important;
+    margin-left:15px !important ;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 30% !important;
+}
+.btn {
+    margin-right: 15px;
+}

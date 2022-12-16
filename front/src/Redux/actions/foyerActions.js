@@ -14,6 +14,9 @@ import {
   SEARCH_FOYERS_LOADING,
   SEARCH_FOYERS_SUCCESS,
   SEARCH_FOYERS_FAIL,
+  SEARCHE_FOYERS_LOADING,
+  SEARCHE_FOYERS_SUCCESS,
+  SEARCHE_FOYERS_FAIL,
 } from "../consts/foyerConsts";
 
 
@@ -103,14 +106,15 @@ export const getAllFoyers = () => async (dispatch) => {
     dispatch({ type: GET_ALL_FOYERS_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({ type: GET_ALL_FOYERS_FAIL, payload: error });
+    
   }
 };
 //search by name 
-export const searchFoyer = (fullname,adresse) => async (dispatch) => {
+export const searchFoyer = (fullname) => async (dispatch) => {
   // const token = localStorage.getItem("token");
   dispatch({ type: SEARCH_FOYERS_LOADING });
   try {
-    const res = await axios.get(`http://localhost:5005/api/foyers/search/?fullname=${fullname}&adresse=${adresse}`,{
+    const res = await axios.get(`http://localhost:5005/api/foyers/search/?fullname=${fullname}`,{
       // headers: {
       //   Authorization: `Bearer ${token}`,
       // },
@@ -118,5 +122,20 @@ export const searchFoyer = (fullname,adresse) => async (dispatch) => {
     dispatch({ type: SEARCH_FOYERS_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({ type: SEARCH_FOYERS_FAIL, payload: error });
+  }
+};
+// search by adresse
+export const searcheFoyer = (adresse) => async (dispatch) => {
+  // const token = localStorage.getItem("token");
+  dispatch({ type: SEARCHE_FOYERS_LOADING });
+  try {
+    const res = await axios.get(`http://localhost:5005/api/foyers/searche/?adresse=${adresse}`,{
+      // headers: {
+      //   Authorization: `Bearer ${token}`,
+      // },
+    });
+    dispatch({ type: SEARCHE_FOYERS_SUCCESS, payload: res.data });
+  } catch (error) {
+    dispatch({ type: SEARCHE_FOYERS_FAIL, payload: error });
   }
 };

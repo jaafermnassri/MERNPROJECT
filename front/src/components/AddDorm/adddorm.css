@@ -1,3 +1,7 @@
 body {
     background-image: '';
 }
+#blc{
+    padding: 1.4% !important;
+    display: flex !important;
+}

@@ -25,6 +25,7 @@ router.post('/register', async (req,res)=>{
         console.log(error.message)
     }
 })
+
 //login
 router.post('/login',async (req,res)=>{
     const { email, password } = req.body;
@@ -49,13 +50,20 @@ router.get("/current", isAuth(), async (req, res) => {
   });
 
 //get all users
-router.get('/', async (req,res)=>{
+router.get('/', isAuth(),async (req,res)=>{
+    const role = req.query.role;
+    
     try {
-        const users = await User.find({})
-        res.send(users)
+      if (role == "all") {
+        const users = await User.find({});
+        
+        return res.send(users);
+      }
+      const users = await User.find({ role:{$regex:role} });
+      res.send(users);
     } catch (error) {
-        res.status(400).send(error);
-        console.log(error)
+      res.status(400).send(error);
+      console.log(error);
     }
 });
 

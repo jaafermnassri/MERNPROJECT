@@ -18,6 +18,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 import DormDashboard from './components/DormDashboard/DormDashboard';
 import ForStudent from './components/private/ForStudent';
 import TopButton from './components/TopButton/TopButton'
+import Testimonial from './components/GuestHome/Testimonial/Testimonial';
+import AddDirector from './components/add director/AddDirector';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +33,7 @@ function App() {
       <Navb/>
       <Routes>
         <Route path="/dormlist"  element={<DormList/>}/>
+        <Route path="/feeds"  element={<Testimonial/>}/>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login/>} />
@@ -39,6 +42,7 @@ function App() {
         <Route path="/dash/:id" element={<ForDirector><DormDashboard /></ForDirector>} />
         <Route path="/user/:id" element={<UserDetail />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/adddirector" element={<AddDirector />} />
         {/* <Route path="/book/:id" element={<BookDorm />} /> */}
       </Routes>
       <TopButton/>

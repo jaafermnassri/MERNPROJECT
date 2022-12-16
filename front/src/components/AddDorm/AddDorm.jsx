@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import React from "react";
-import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardText, MDBCheckbox, MDBCol, MDBInput, MDBProgress, MDBProgressBar, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
+import "./adddorm.css"
+import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardImage, MDBCheckbox, MDBCol, MDBInput,  MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addFoyer } from '../../Redux/actions/foyerActions';
@@ -32,9 +33,9 @@ const AddDorm = () => {
   
   return (
     // <MDBCard className='text-black m-5' style={{borderRadius: '25px'}}>
-    <div className="mx-auto mt-5" style={{ maxWidth: '900px' }}>
-      <MDBRow>
-        <MDBCol md="8" className="mb-4">
+    <MDBCard className="mx-auto mt-5" id="blc">
+      <MDBRow style={{justifyContent: "space-around"}} >
+        <MDBCol md="8" className="mb-4" style={{ maxWidth: '40%' }}>
           <MDBCard className="mb-4">
             <MDBCardHeader className="py-3">
               <MDBTypography tag="h5" className="mb-0">Complete your Dorm infos creating</MDBTypography>
@@ -70,10 +71,13 @@ const AddDorm = () => {
           </MDBCard>
           
         </MDBCol>
-        
+        <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
+              <MDBCardImage src='4301234.png' fluid/>
+              
+            </MDBCol>
       </MDBRow>
      
-    </div>
+    </MDBCard>
     // </MDBCard>
   )
 }

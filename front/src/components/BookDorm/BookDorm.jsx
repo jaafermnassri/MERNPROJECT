@@ -2,8 +2,9 @@ import { MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalContent, MDBModalDial
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { addBook } from '../../Redux/actions/bookingActions';
+import { addBook, getAllBookings } from '../../Redux/actions/bookingActions';
 import { detailsFoyer } from '../../Redux/actions/foyerActions';
+import { detailsUser } from '../../Redux/actions/userActions';
 
 const BookDorm = () => {
 
@@ -18,9 +19,12 @@ const BookDorm = () => {
   const [university, setUniversity] = useState("");
   const [birthDate, setBirthDate] = useState("");
 
-  useEffect(() => {
-    dispatch(detailsFoyer(id));
-    }, []);
+  
+
+
+
+
+
     
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,6 +45,7 @@ const BookDorm = () => {
 
   return (
     <div>
+    
       <MDBBtn onClick={toggleShow}>Book</MDBBtn>
   
   <MDBModal staticBackdrop tabIndex='-1' show={staticModal} setShow={setStaticModal}>

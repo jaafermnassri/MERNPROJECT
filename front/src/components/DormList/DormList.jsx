@@ -1,7 +1,7 @@
 // import { MDBInput } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllFoyers } from "../../Redux/actions/foyerActions";
+import { getAllFoyers, searcheFoyer } from "../../Redux/actions/foyerActions";
 import { searchFoyer } from "../../Redux/actions/foyerActions";
 import DormCard from "../DormCard/DormCard";
 
@@ -17,6 +17,7 @@ const DormList = () => {
     "TOZER"
   ];
   const [search, setSearch] = useState("")
+  const [adresse, setAdresse] = useState("");
   const dorms = useSelector((state) => state.foyerReducer.foyers);
   //select
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ useEffect(() => {
   dispatch(getAllFoyers());
 }, [])
 const handleAdresse = (e) => {
-  dispatch(searchFoyer(e.target.value, "",""));
+  dispatch(searcheFoyer(e.target.value, "",""));
 };
 
   //select
@@ -40,8 +41,8 @@ const handleAdresse = (e) => {
         <button type="button"  onClick={() => {dispatch(searchFoyer(search));setSearch("")}} className="btn btn-primary">
           <i className="fas fa-search"></i>
         </button>
-      </div>
-      <select
+      
+        <select
             className="form-select form-select-lg"
             onChange={handleAdresse}
             name="select-lawyer"
@@ -54,6 +55,8 @@ const handleAdresse = (e) => {
               </option>
             ))}
           </select>
+      </div>
+      
       <div
         style={{
           display: "flex",

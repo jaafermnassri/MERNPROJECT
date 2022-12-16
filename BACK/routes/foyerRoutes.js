@@ -18,11 +18,24 @@ router.get("/",isAuth(), async (req, res) => {
 
     
 });
-//SEARCH filter
+//SEARCH filter by name
 //------------
 router.get("/search",async (req, res) => {
     try {
-        const foyes = await Foyer.find({fullname:{$regex:req.query.fullname.toUpperCase()}},{adresse:{$regex:req.query.adresse.toUpperCase()}}).populate();
+        const foyes = await Foyer.find({fullname:{$regex:req.query.fullname.toUpperCase()}}).populate();
+        
+          res.send(foyes);   
+    } catch (error) {
+        res.status(400).send(error.message);
+            console.log(error);
+    }
+    
+  });
+  //SEARCH filter by adresse
+//------------
+router.get("/searche",async (req, res) => {
+    try {
+        const foyes = await Foyer.find({adresse:{$regex:req.query.adresse.toUpperCase()}}).populate();
         
           res.send(foyes);   
     } catch (error) {

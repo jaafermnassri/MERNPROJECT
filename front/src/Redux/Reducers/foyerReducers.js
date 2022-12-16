@@ -9,6 +9,9 @@ import {
     SEARCH_FOYERS_FAIL,
     SEARCH_FOYERS_LOADING,
     SEARCH_FOYERS_SUCCESS,
+    SEARCHE_FOYERS_FAIL,
+    SEARCHE_FOYERS_LOADING,
+    SEARCHE_FOYERS_SUCCESS,
   } from "../consts/foyerConsts";
   
   const initialstate = {
@@ -45,6 +48,12 @@ import {
         return { ...state,  foyers: payload, loading: false };
       case SEARCH_FOYERS_FAIL:
         return { ...state, errors: payload, loading: false };
+        case SEARCHE_FOYERS_LOADING:
+          return { ...state, loading: true };
+        case SEARCHE_FOYERS_SUCCESS:
+          return { ...state,  foyers: payload, loading: false };
+        case SEARCHE_FOYERS_FAIL:
+          return { ...state, errors: payload, loading: false };
   
       default:
         return state;

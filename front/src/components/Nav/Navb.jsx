@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../Redux/actions/userActions';
+import Testimonial from '../GuestHome/Testimonial/Testimonial';
 import ForAdmin from '../private/ForAdmin';
 import ForDirector from '../private/ForDirector';
 import "./Navb.css"
@@ -25,23 +26,25 @@ function Navb() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-           <ForDirector> <Link to="/addDorm">Add Dorm</Link> </ForDirector>
-           <Link to="/dormlist">Dorms</Link>
+           <ForDirector> <Link to="/addDorm">Create your Dorm</Link> </ForDirector>
+           <Link to="/dormlist">Dorms List</Link>
            <ForAdmin><Link to="/dashboard">Dashboard</Link></ForAdmin>
-            
+           <ForAdmin><Link to="/adddirector">Add a Director</Link></ForAdmin>
+           <Link to="/feeds">Feed Backs</Link>
           </Nav>
+        
           <Nav>
           <Nav.Link href="#pricing">FAQ</Nav.Link>
             <NavDropdown title="Profile" id="collasible-nav-dropdown">
-              <Link to={`/user/${userinfo._id}`}>{userinfo.firstName}</Link>
+              
               <NavDropdown.Item href="#action/3.2">
-                Another action
+              <Link to={`/user/${userinfo._id}`}>{userinfo.firstName}</Link>
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item  >
-              {localStorage.getItem("token")} ? 
-  <div onClick={() => {dispatch(logout());navigate("/login", { replace: true });}}>Logout</div> :<Link to="/login">Login</Link>
+              {localStorage.getItem("token") ? 
+  <div onClick={() => {dispatch(logout());navigate("/login", { replace: true });}}>Logout</div> :<Link to="/login">Login</Link>}
                 {/* <Link to="/register">Login / SignUp</Link>  */}
               </NavDropdown.Item>
             </NavDropdown>

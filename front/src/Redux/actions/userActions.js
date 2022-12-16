@@ -48,10 +48,14 @@ export const getCurrentUser = () => async (dispatch) => {
   }
 }
 //GET ALL USERS
-export const getAllUsers = () => async (dispatch) => {
+export const getAllUsers = (role) => async (dispatch) => {
+  const token = localStorage.getItem("token");
   dispatch({ type: GET_ALL_USERS_LOADING });
   try {
-    const res = await axios.get("http://localhost:5005/api/users/");
+    const res = await axios.get(`http://localhost:5005/api/users/?role=${role}`,{headers: {
+      Authorization: `Bearer ${token}`,
+    },});
+    
     dispatch({ type: GET_ALL_USERS_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({ type: GET_ALL_USERS_FAIL, payload: error });

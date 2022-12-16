@@ -1,0 +1,12 @@
+.bton {
+    display: flex !important;
+    justify-content: flex-start !important;
+    margin-left: 2em !important;
+    margin: 2em !important;
+}
+.allusers  {
+    width: 90% !important;
+    margin: 0 auto;
+    border: 3px solid #e0e0e0 ;
+    
+}

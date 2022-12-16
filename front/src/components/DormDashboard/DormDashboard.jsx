@@ -17,11 +17,7 @@ import {
   MDBBtn,
   MDBBreadcrumb,
   MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem,
+  
   MDBTable,
   MDBTableHead,
   MDBTableBody
@@ -151,7 +147,7 @@ useEffect(() => {
       <MDBTableHead>
         <tr>
           <th scope='col'>#</th>
-          <th scope='col'>FullName</th>
+          <th scope='col'>ID</th>
           <th scope='col'>University</th>
           <th scope='col'>Action</th>
           <th scope='col'>Action2</th>
