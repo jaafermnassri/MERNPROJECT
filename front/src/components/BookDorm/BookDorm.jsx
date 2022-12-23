@@ -1,10 +1,9 @@
 import { MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBTextArea } from 'mdb-react-ui-kit'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { addBook, getAllBookings } from '../../Redux/actions/bookingActions';
-import { detailsFoyer } from '../../Redux/actions/foyerActions';
-import { detailsUser } from '../../Redux/actions/userActions';
+import { addBook } from '../../Redux/actions/bookingActions';
+
 
 const BookDorm = () => {
 
@@ -58,10 +57,10 @@ const BookDorm = () => {
         <MDBModalBody>
         <form method='POST'  >
               University<MDBInput name="university"  onChange={(e) => {setUniversity(e.target.value);}} label='' type='text' className="mb-4" />
-                Birthdate<MDBInput name="birthDate"  onChange={(e) => {setBirthDate(e.target.value);}} label='' type='text' className="mb-4" />
-                Email<MDBInput label='' type='text' className="mb-4" />
-                Phone<MDBInput label='' type='text' className="mb-4" />
-                Additional information<MDBTextArea label='' rows={4} className="mb-4" />
+              Birthdate<MDBInput name="birthDate"  onChange={(e) => {setBirthDate(e.target.value);}} label='' type='text' className="mb-4" />
+              Email<MDBInput label='' type='text' className="mb-4" />
+              Phone<MDBInput label='' type='text' className="mb-4" />
+              Additional information<MDBTextArea label='' rows={4} className="mb-4" />
 
   
 

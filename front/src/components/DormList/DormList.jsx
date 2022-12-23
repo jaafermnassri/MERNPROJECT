@@ -17,7 +17,7 @@ const DormList = () => {
     "TOZER"
   ];
   const [search, setSearch] = useState("")
-  const [adresse, setAdresse] = useState("");
+  // const [adresse, setAdresse] = useState("");
   const dorms = useSelector((state) => state.foyerReducer.foyers);
   //select
   const dispatch = useDispatch();

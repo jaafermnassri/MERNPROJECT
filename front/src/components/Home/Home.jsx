@@ -6,10 +6,7 @@ import Contact from '../GuestHome/Contact/Contact'
 import Features from '../GuestHome/Features/Features'
 import Footer from '../GuestHome/Footer/Footer'
 import Header from '../GuestHome/Header/Header'
-
 import HeaderCopy from '../GuestHome/Header/HeaderCopy'
-import Pricing from '../GuestHome/Pricing/Pricing'
-import Slides from '../GuestHome/Slides/Slides'
 import Testimonial from '../GuestHome/Testimonial/Testimonial'
 
 const Home = () => {

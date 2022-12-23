@@ -31,15 +31,24 @@ else{res.status(401).send({msg:"Only students are allowed to book for a dorm"});
 // get bookings list for this foyer
 router.get("/:id",isAuth(), async (req,res)=> {
     
-    if(req.user.role === 'admin' || req.user.role === 'director'){
+    // if(req.user.role === 'admin' || req.user.role === 'director'){
     try {
         const booksList = await Booking.find({foyer : req.params.id})
         res.send(booksList)
     } catch (error) {
         res.status(400).send(error);
     }
-}
-else{res.status(401).send({msg:"You are not an Admin or Director, go back !"});}
+//}
+// else{res.status(401).send({msg:"You are not an Admin or Director, go back !"});}
+})
+//GET ALL
+router.get("/",isAuth(),async (req,res)=> {
+    try {
+        const books = await Booking.find({})
+        res.send(books)
+    } catch (error) {
+        res.status(400).send(error);
+    }
 })
 
 module.exports = router;

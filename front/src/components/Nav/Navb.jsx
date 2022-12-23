@@ -9,6 +9,8 @@ import { logout } from '../../Redux/actions/userActions';
 import Testimonial from '../GuestHome/Testimonial/Testimonial';
 import ForAdmin from '../private/ForAdmin';
 import ForDirector from '../private/ForDirector';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBuilding } from '@fortawesome/free-solid-svg-icons'
 import "./Navb.css"
 function Navb() {
   const dispatch = useDispatch();
@@ -22,7 +24,8 @@ function Navb() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand ><Link to="/">DormsNet</Link></Navbar.Brand>
+      
+        <Navbar.Brand ><Link to="/"><i class="fas fa-building"></i> DormsNet</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">

@@ -52,7 +52,7 @@ router.get("/current", isAuth(), async (req, res) => {
 //get all users
 router.get('/', isAuth(),async (req,res)=>{
     const role = req.query.role;
-    
+    if(req.user.role === 'admin'){
     try {
       if (role == "all") {
         const users = await User.find({});
@@ -65,6 +65,8 @@ router.get('/', isAuth(),async (req,res)=>{
       res.status(400).send(error);
       console.log(error);
     }
+  }
+    else{res.status(401).send({msg:"Only admins are allowed"});}
 });
 
 

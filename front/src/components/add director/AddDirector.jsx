@@ -1,9 +1,9 @@
 
 import React from "react"
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { register } from "../../Redux/actions/userActions";
-import {MDBBtn,MDBContainer, MDBRow,MDBCol,MDBCard,MDBCardBody,MDBCardImage,MDBInput,MDBIcon, MDBCheckbox}from 'mdb-react-ui-kit';
+import {MDBBtn,MDBContainer, MDBRow,MDBCol,MDBCard,MDBCardBody,MDBCardImage,MDBInput,MDBIcon}from 'mdb-react-ui-kit';
 import "./adddirector.css"
 export default function AddDirector() {
 

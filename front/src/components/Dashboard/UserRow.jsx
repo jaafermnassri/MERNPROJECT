@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { MDBBadge, MDBBtn, MDBTableBody,MDBTable,MDBTableHead } from 'mdb-react-ui-kit';
-import { useDispatch } from 'react-redux';
-import { deleteUser, detailsUser } from '../../Redux/actions/userActions';
-import { useParams } from 'react-router-dom';
+
 const UserRow = ({user}) => {
   // const {id} = useParams()
   // const dispatch = useDispatch();

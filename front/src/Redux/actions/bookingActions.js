@@ -18,8 +18,7 @@ export const addBook = (id,newBook,navigate) => async (dispatch) => {
       );
       
       dispatch({ type: NEW_BOOKING_SUCCESS, payload: res.data });
-    alert("Booked Successfully")
-      navigate(`/`);
+    alert("Booked Successfully");
     } catch (error) {
       dispatch({ type: NEW_BOOKING_FAIL, payload: error });
       console.dir(error);

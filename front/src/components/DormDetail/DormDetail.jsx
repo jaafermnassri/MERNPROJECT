@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { deleteFoyer, detailsFoyer } from '../../Redux/actions/foyerActions';
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import EditDorm from '../EditDorm/EditDorm';
 import BookDorm from '../BookDorm/BookDorm';
 import ForStudent from '../private/ForStudent';
@@ -23,20 +23,28 @@ import {
   MDBListGroup,
   MDBListGroupItem
 } from 'mdb-react-ui-kit';
+import { getAllBookings } from '../../Redux/actions/bookingActions';
 const DormDetail = ({foyer}) => {
-  
+  const allBookings = useSelector((state)=> state.bookingReducer.bookings);
     const oneFoyer = useSelector((state)=> state.foyerReducer.oneFoyer);
     
     const userid = useSelector((state)=>state.userReducer.user._id)
     
 const {id} = useParams()
+
   const dispatch = useDispatch();
  useEffect(() => {
     dispatch(detailsFoyer(id)) 
     
   }, [])
+  useEffect(() => {
+    
+    dispatch(getAllBookings(id));
+    console.log(allBookings)
+    }, []);
   console.log(userid)
     console.log(oneFoyer.user)
+    console.log(allBookings.find(({user})=> user == userid));
   return (
     
     <div>
@@ -71,11 +79,11 @@ const {id} = useParams()
                 <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
                 <div className="d-flex justify-content-center mb-2">
                 <ForDirector>
-                  {userid == oneFoyer.user ?
+                  {userid === oneFoyer.user ?
         <><EditDorm/>
         <MDBBtn onClick={() => dispatch(deleteFoyer(id))} ><Link to="/">delete</Link></MDBBtn></>:null}
         </ForDirector>
-        <ForStudent><BookDorm /></ForStudent>
+        <ForStudent>{allBookings.find(({user})=> user === userid) === undefined ?<BookDorm />:<MDBBtn disabled>Already Booked</MDBBtn>}</ForStudent>
                 </div>
               </MDBCardBody>
             </MDBCard>

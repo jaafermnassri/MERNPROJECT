@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import {MDBBtn,MDBModal,MDBModalDialog,MDBModalContent,MDBModalHeader,MDBModalTitle,MDBModalBody,MDBModalFooter, MDBInput, MDBTextArea} from 'mdb-react-ui-kit';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { editFoyer } from '../../Redux/actions/foyerActions';
 import { editUser, getCurrentUser } from '../../Redux/actions/userActions';
 const EditUser = () => {
 

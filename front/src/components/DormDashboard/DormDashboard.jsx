@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { deleteFoyer, detailsFoyer } from '../../Redux/actions/foyerActions';
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import EditDorm from '../EditDorm/EditDorm';
 import BookDorm from '../BookDorm/BookDorm';
 import ForStudent from '../private/ForStudent';
@@ -28,7 +28,7 @@ import { detailsUser } from '../../Redux/actions/userActions';
 
 const DormDashboard = () => {
   const {id} = useParams()
-  const users = useSelector((state)=>state.userReducer.users)
+  const IsDirector = useSelector((state)=>state.userReducer.user.role)
     const userid = useSelector((state)=>state.userReducer.user._id)
     const oneFoyer = useSelector((state)=> state.foyerReducer.oneFoyer);
     const allBookings = useSelector((state)=> state.bookingReducer.bookings);
@@ -52,7 +52,8 @@ useEffect(() => {
  
   return (
     <div>
-        
+        {IsDirector==="director"?
+    <>
         <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
         <MDBRow>
@@ -176,6 +177,21 @@ useEffect(() => {
       </MDBContainer>
       
     </section>
+    </>
+    :<div className="d-flex align-items-center justify-content-center vh-100">
+    <div className="text-center">
+      <h1 className="display-1 fw-bold">404</h1>
+      <p className="fs-3"> <span className="text-danger">Ops!</span> Page not found.</p>
+      <p className="lead">
+        Nice try ! But you are not a Director
+      </p>
+      <Link to={"/"}><MDBBtn>Go Home</MDBBtn></Link>
+      <hr />
+      <p className="lead">
+        or try hacking the database so you can become a Director
+      </p>
+    </div>
+  </div>}
     </div>
   )
 }

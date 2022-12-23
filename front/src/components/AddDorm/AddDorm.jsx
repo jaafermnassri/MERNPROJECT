@@ -13,7 +13,7 @@ const AddDorm = () => {
   const [fullname, setFullname] = useState("");
   const [adresse, setAdresse] = useState("");
   const [gender, setGender] = useState("")
-  const [description, setDescription] = useState("");
+  // const [description, setDescription] = useState("");
   const [maxCapacity, setMaxCapacity] = useState(0);
   const handleSubmit = (event) => {
     event.preventDefault();

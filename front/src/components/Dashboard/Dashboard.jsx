@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody} from 'mdb-react-ui-kit';
 import { useSelector } from 'react-redux';
-import UserRow from './UserRow';
+
 import "./dashboard.css"
-import { deleteUser, getAllUsers } from '../../Redux/actions/userActions';
+import {getAllUsers } from '../../Redux/actions/userActions';
+import { Link } from 'react-router-dom';
+import DeleteUser from './DeleteUser';
 
 
 
 const Dashboard = () => {
-
+  
+  const IsAdmin = useSelector((state)=>state.userReducer.user.role)
   const [role, setRole] = useState("all");
 
   const dispatch = useDispatch();
     const allusers = useSelector((state) => state.userReducer.users);
     useEffect(() => {
       dispatch(getAllUsers(role));
-    }, []);
+    }, [role]);
     
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,7 +28,10 @@ const Dashboard = () => {
   };
 //select
   return (
+    
     <div>
+      {IsAdmin==="admin"?
+      <>
        <form >
       <group  className="bton">
         <button type="button" onClick={() => {setRole("all");dispatch(getAllUsers(role))}}  class="btn btn-dark btn-rounded">All Users</button>
@@ -72,18 +78,35 @@ const Dashboard = () => {
           </td>
           <td>{user.role}</td>
           <td>
-          {/* onClick={() => dispatch(deleteUser(id))} */}
-            <MDBBtn color='link' onClick={() => dispatch(deleteUser(user._id))}  rounded size='sm'>
-              Delete
-            </MDBBtn>
+          {/* onClick={() => dispatch(deleteUser(user._id))} */}
+         
+           <DeleteUser user={user} key={user._id}/>
+            
           </td>
           </tr>
         ))}
       </MDBTableBody>
       <> </>
     </MDBTable>
-   
+    </>
+   :
+   <div className="d-flex align-items-center justify-content-center vh-100">
+  <div className="text-center">
+    <h1 className="display-1 fw-bold">404</h1>
+    <p className="fs-3"> <span className="text-danger">Ops!</span> Page not found.</p>
+    <p className="lead">
+      Nice try ! But you are not an admin
+    </p>
+    <Link to={"/"}><MDBBtn>Go Home</MDBBtn></Link>
+    <hr />
+    <p className="lead">
+      or try hacking the database so you can become an admin
+    </p>
+  </div>
+</div>
+}
     </div>
+    
   )
 }
 
